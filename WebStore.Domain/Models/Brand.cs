@@ -1,8 +1,14 @@
-﻿using WebStore.Domain.Models.Base;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using WebStore.Domain.Models.Base;
 
 namespace WebStore.Domain.Models
 {
-    public class Brand : OrderEntity
+    [Table("Brands")]
+    public class Brand : NameEntity, IOrderEntity
     {
+        public int Order { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+
     }
 }
