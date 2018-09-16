@@ -16,8 +16,8 @@ namespace AspProjekt.ViewComponents
             _productData = productData;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
-       // public IViewComponentResult Invoke()
+        //public async Task<IViewComponentResult> InvokeAsync()
+        public IViewComponentResult Invoke()
         {
             var sections = GetSections();
             return View(sections);
