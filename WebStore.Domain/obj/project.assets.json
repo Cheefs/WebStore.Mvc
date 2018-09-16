@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\karol\\Desktop\\Homework 1\\AspProjekt\\WebStore.Domain\\WebStore.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\karol\\Desktop\\AspHomeWorks-HomeWork4\\AspHomeWorks-HomeWork4\\WebStore.Domain\\WebStore.Domain.csproj",
       "projectName": "WebStore.Domain",
-      "projectPath": "C:\\Users\\karol\\Desktop\\Homework 1\\AspProjekt\\WebStore.Domain\\WebStore.Domain.csproj",
+      "projectPath": "C:\\Users\\karol\\Desktop\\AspHomeWorks-HomeWork4\\AspHomeWorks-HomeWork4\\WebStore.Domain\\WebStore.Domain.csproj",
       "packagesPath": "C:\\Users\\karol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\karol\\Desktop\\Homework 1\\AspProjekt\\WebStore.Domain\\obj\\",
+      "outputPath": "C:\\Users\\karol\\Desktop\\AspHomeWorks-HomeWork4\\AspHomeWorks-HomeWork4\\WebStore.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
