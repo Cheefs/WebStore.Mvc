@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.DomainNew.Entities;
@@ -37,21 +34,19 @@ namespace WebStore.Controllers
                 var loginResult = await _signInManager.PasswordSignInAsync(model.UserName,
                     model.Password,
                     model.RememberMe,
-                    lockoutOnFailure: false);//Проверяем логин/пароль пользователя
+                    lockoutOnFailure: false);
 
-                if (loginResult.Succeeded)//если проверка успешна
+                if (loginResult.Succeeded)
                 {
-                    if (Url.IsLocalUrl(model.ReturnUrl))//и returnUrl - локальный
+                    if (Url.IsLocalUrl(model.ReturnUrl))
                     {
-                        return Redirect(model.ReturnUrl);//перенаправляем туда откуда пришли
+                        return Redirect(model.ReturnUrl);
                     }
 
-                    return RedirectToAction("Index", "Home");//иначе на главную
+                    return RedirectToAction("Index", "Home");
                 }
-
             }
-
-            ModelState.AddModelError("", "Вход невозможен");//говорим пользователю что вход невозможен
+            ModelState.AddModelError("", "Вход невозможен");
             return View(model);
         }
 
@@ -65,25 +60,23 @@ namespace WebStore.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterUserViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+            var user = new User { UserName = model.UserName/*, Email = model.Email */};
+
+                var createResult = await _userManager.CreateAsync(user, model.Password); 
+
+            if (createResult.Succeeded)
             {
-                var user = new User { UserName = model.UserName };//создаем сущность пользователь
-                var createResult = await _userManager.CreateAsync(user, model.Password);//используем менеджер для создания
-                if (createResult.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, false);//если успешно - производим логин
-                    return RedirectToAction("Index", "Home");
-                }
-                else//иначе
-                {
-                    foreach (var identityError in createResult.Errors)//выводим ошибки
-                    {
-                        ModelState.AddModelError("", identityError.Description);
-                    }
-                }
+                await _signInManager.SignInAsync(user, false); 
+                await _userManager.AddToRoleAsync(user, "User");
+                return RedirectToAction("Index", "Home");
+            }
+            foreach (var identityError in createResult.Errors)
+            {
+                ModelState.AddModelError("", identityError.Description);
             }
             return View(model);
-        }
+        }
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
