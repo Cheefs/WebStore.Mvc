@@ -126,12 +126,12 @@
 @media (max-width: 767px) {
 
 .header_top .col-sm-6:first-child{
-	display: inline-block;
+	
 	float: left;
 }
 
 .header_top .col-sm-6:last-child{
-	display: inline-block;
+	
 	float: right;
 }
 
@@ -209,7 +209,7 @@ ul.sub-menu{
 .nav.navbar-nav > li:hover > ul.sub-menu{
   -webkit-animation: none;
   -moz-animation: none;
-  -ms-animation: none;
+
   -o-animation: none;
   animation: none;
   box-shadow: none;
@@ -260,9 +260,7 @@ ul.sub-menu{
 	display: inline-block;
 }
 
-.single-widget{
 
-}
 
 .product-information span {
 	display: block;
@@ -394,7 +392,7 @@ ul.sub-menu{
 .nav.navbar-nav > li:hover > ul.sub-menu{
   -webkit-animation: none;
   -moz-animation: none;
-  -ms-animation: none;
+
   -o-animation: none;
   animation: none;
   box-shadow: none;

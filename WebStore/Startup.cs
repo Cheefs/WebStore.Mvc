@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -42,7 +43,6 @@ namespace WebStore
             services.AddScoped<IProductData, SqlProductData>();
             services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<WebStoreContext>()
                 .AddDefaultTokenProviders();
@@ -58,7 +58,7 @@ namespace WebStore
                 options.Lockout.AllowedForNewUsers = true;
 
                 // User settings
-                //options.User.RequireUniqueEmail = true;
+                options.User.RequireUniqueEmail = true;
             });
 
             services.ConfigureApplicationCookie(options =>
@@ -71,6 +71,10 @@ namespace WebStore
                 options.AccessDeniedPath = "/Account/AccessDenied"; // If the AccessDeniedPath is not set here, ASP.NET Core will default to /Account/AccessDenied
                 options.SlidingExpiration = true;
             });
+
+            //Настройки для корзины
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ICartService, CookieCartService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

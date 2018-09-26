@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EmployeeView>
+﻿@using WebStore.DomainNew.Models;
+@model IEnumerable<EmployeeView>
 @{
     ViewBag.Title = "Список сотрудников";
 }
@@ -18,7 +19,7 @@
             <td>Очество</td>
             <td>Возвраст</td>
             <td>Карточка сотрудника</td>
-            @if (User.IsInRole("Administrator"))
+            @if (User.IsInRole(Constant.Roles.Admin))
             {
                 <td>Редактировать</td>
                 <td>Удалить</td>
@@ -27,26 +28,26 @@
         </tr>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>@item.FirstName</td>
-            <td>@item.SurName</td>
-            <td>@item.Patronymic</td>
-            <td>@item.Age</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Детали</a>
-            </td>
-            @if (User.IsInRole("Administrator"))
-            {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.SurName</td>
+                <td>@item.Patronymic</td>
+                <td>@item.Age</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">
-                        <i class="fa fa-edit"></i>
-                    </a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a>
                 </td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-cut"></i></a>
-               </td>
-            }
-        </tr>
+                @if (User.IsInRole(Constant.Roles.Admin))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-cut"></i></a>
+                    </td>
+                }
+            </tr>
         }
     </table>
 
