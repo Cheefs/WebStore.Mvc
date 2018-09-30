@@ -13192,11 +13192,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore\\WebStore.csproj",
+      "projectUniqueName": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore\\WebStore.csproj",
       "projectName": "WebStore",
-      "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore\\WebStore.csproj",
+      "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore\\WebStore.csproj",
       "packagesPath": "C:\\Users\\karol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore\\obj\\",
+      "outputPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13215,11 +13215,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DAL\\WebStore.DAL.csproj": {
-              "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DAL\\WebStore.DAL.csproj"
+            "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore.DAL\\WebStore.DAL.csproj": {
+              "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore.DAL\\WebStore.DAL.csproj"
             },
-            "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj": {
-              "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj"
+            "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj": {
+              "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj"
             }
           }
         }

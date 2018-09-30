@@ -79,8 +79,9 @@
                             </li>
                             <li>
                                 <a asp-controller="Cart" asp-action="Details">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    Cart
+                                    @await Component.InvokeAsync("Cart")
+                                    @*<i class="fa fa-shopping-cart"></i>*@
+                                 
                                 </a>
                             </li>
                         </ul>

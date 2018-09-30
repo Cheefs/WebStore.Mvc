@@ -37,12 +37,16 @@ namespace WebStore
             //Добавляем сервисы, необходимые для mvc
             services.AddMvc();
 
-            //Добавляем разрешение зависимости
+            //Добавляем разрешение зависимостей
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            services.AddTransient<IProductData, SqlProductData>();
+            services.AddTransient<IOrdersService, SqlOrdersService>();
 
-            services.AddScoped<IProductData, SqlProductData>();
+            //Добавляем EF Core
             services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
+
+            //Настройка Identity
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<WebStoreContext>()
                 .AddDefaultTokenProviders();
@@ -74,11 +78,11 @@ namespace WebStore
 
             //Настройки для корзины
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<ICartService, CookieCartService>();
+            services.AddTransient<ICartService, CookieCartService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider svp)
         {
             if (env.IsDevelopment())
             {
@@ -95,6 +99,11 @@ namespace WebStore
             //Добавляем обработку запросов в mvc-формате
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

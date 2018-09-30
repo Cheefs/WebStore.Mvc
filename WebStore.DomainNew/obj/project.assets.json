@@ -3612,11 +3612,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj",
+      "projectUniqueName": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj",
       "projectName": "WebStore.DomainNew",
-      "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj",
+      "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj",
       "packagesPath": "C:\\Users\\karol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DomainNew\\obj\\",
+      "outputPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 8\\WebStore\\WebStore.DomainNew\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

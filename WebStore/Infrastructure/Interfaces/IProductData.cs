@@ -34,5 +34,10 @@ namespace WebStore.Infrastructure.Interfaces
         /// <param name="id">Идентификатор</param>
         /// <returns>Сущность Product, если нашёл, иначе null</returns>
         Product GetProductById(int id);
+
+        void Edit();
+        void AddNew(Product model);
+        void Delete(int id);
+
     }
 }
