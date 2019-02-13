@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.DomainNew.Entities;
 using WebStore.Models.Account;
+using WebStore.DomainNew.Models;
 
 namespace WebStore.Controllers
 {
@@ -68,7 +69,7 @@ namespace WebStore.Controllers
             if (createResult.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false); 
-                await _userManager.AddToRoleAsync(user, "User");
+                await _userManager.AddToRoleAsync(user, Constant.Roles.User );
                 return RedirectToAction("Index", "Home");
             }
             foreach (var identityError in createResult.Errors)
@@ -76,7 +77,8 @@ namespace WebStore.Controllers
                 ModelState.AddModelError("", identityError.Description);
             }
             return View(model);
-        }
+        }
+
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()

@@ -3694,11 +3694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 6\\WebStore\\WebStore.DAL\\WebStore.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DAL\\WebStore.DAL.csproj",
       "projectName": "WebStore.DAL",
-      "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 6\\WebStore\\WebStore.DAL\\WebStore.DAL.csproj",
+      "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DAL\\WebStore.DAL.csproj",
       "packagesPath": "C:\\Users\\karol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 6\\WebStore\\WebStore.DAL\\obj\\",
+      "outputPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3717,8 +3717,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 6\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj": {
-              "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 6\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj"
+            "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj": {
+              "projectPath": "C:\\Users\\karol\\Desktop\\C# Developer\\6- ASP.Net\\Homework 7\\WebStore\\WebStore.DomainNew\\WebStore.DomainNew.csproj"
             }
           }
         }
