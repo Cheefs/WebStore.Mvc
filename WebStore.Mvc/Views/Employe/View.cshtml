@@ -1,0 +1,33 @@
+﻿@model EmployeViewModel;
+
+@{
+    ViewBag.Title = $"Details {@Model.Id}";
+}
+
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td>ID: </td>
+            <td>@Model.Id</td>
+        </tr>
+             <tr>
+            <td>LastName: </td>
+            <td>@Model.LastName</td>
+        </tr>
+        <tr>
+            <td>FirstName: </td>
+            <td>@Model.FirstName</td>
+        </tr>
+
+        <tr>
+            <td>Patronymic: </td>
+            <td>@Model.Patronymic</td>
+        </tr>
+                <tr>
+            <td>Age: </td>
+            <td>@Model.Age</td>
+        </tr>
+    </tbody>
+</table>
+
+<a asp-action="Index">Go to List</a>
