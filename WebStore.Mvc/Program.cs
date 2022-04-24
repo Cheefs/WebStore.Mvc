@@ -1,14 +1,24 @@
 using WebStore.Mvc.Infrastructure.Interfaces;
 using WebStore.Mvc.Infrastructure.InMemory;
 using WebStore.Mvc.Models;
+using WebStore.Mvc.DataAccessLayer;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var servisesRef = builder.Services;
 servisesRef.AddControllersWithViews();
 servisesRef.AddSingleton<IRepository<EmployeViewModel>, EmployeRepository>();
+servisesRef.AddPersistence(builder.Configuration);
 
 var app = builder.Build();
+
+using(var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    var context = serviceProvider.GetService<WebStoreDbContext>();
+
+    DbInitializer.Initialize(context);
+}
 
 app.UseStaticFiles();
 app.UseRouting();
