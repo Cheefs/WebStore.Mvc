@@ -4,10 +4,12 @@
     {
         public IEnumerable<T> GetAll();
 
-        public T? GetById(int id);
+        public T? GetById(int? id);
 
         public bool Delete(int id);
 
         public bool Update(T data);
+
+        public int Add(T data);
     }
 }

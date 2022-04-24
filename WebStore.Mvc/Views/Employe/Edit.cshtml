@@ -1,6 +1,6 @@
 ﻿@model EmployeViewModel;
 @{
-    ViewData["Title"] = "Редактирование сотрудника";
+    ViewData["Title"] = Model?.Id != null ? "Редактирование сотрудника" : "Добавление сотрудника";
 }
 <h2>@ViewData["Title"]</h2>
 
