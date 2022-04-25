@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebStore.Mvc.Domain
+namespace WebStore.Mvc.Domain.Entities
 {
     public class Product: BaseEntity
     {
@@ -10,7 +10,7 @@ namespace WebStore.Mvc.Domain
 
         public int SectionId { get; set; }
 
-        public int BrandId { get; set; }
+        public int? BrandId { get; set; }
 
         public string ImageUrl { get; set; }
 

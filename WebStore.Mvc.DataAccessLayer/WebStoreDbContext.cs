@@ -1,6 +1,5 @@
-﻿using WebStore.Mvc.Domain;
+﻿using WebStore.Mvc.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using WebStore.Mvc.DataAccessLayer.Configuration;
 
 namespace WebStore.Mvc.DataAccessLayer
 {

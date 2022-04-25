@@ -1,4 +1,4 @@
-﻿namespace WebStore.Mvc.Infrastructure.Interfaces
+﻿namespace WebStore.Mvc.Servises.Interfaces
 {
     public interface IRepository<T>
     {

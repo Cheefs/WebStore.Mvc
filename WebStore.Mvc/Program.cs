@@ -1,5 +1,5 @@
-using WebStore.Mvc.Infrastructure.Interfaces;
-using WebStore.Mvc.Infrastructure.InMemory;
+using WebStore.Mvc.Servises.Interfaces;
+using WebStore.Mvc.Servises.InMemory;
 using WebStore.Mvc.Models;
 using WebStore.Mvc.DataAccessLayer;
 
@@ -8,7 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 var servisesRef = builder.Services;
 servisesRef.AddControllersWithViews();
 servisesRef.AddSingleton<IRepository<EmployeViewModel>, EmployeRepository>();
+servisesRef.AddSingleton<IProductData, ProductRepository>();
 servisesRef.AddPersistence(builder.Configuration);
+servisesRef.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+    options.LowercaseQueryStrings = true;
+});
 
 var app = builder.Build();
 
@@ -66,12 +72,6 @@ app.UseEndpoints(endpoints =>
     );
 
     endpoints.MapControllerRoute(
-        name: "shop",
-        pattern: "shop",
-        defaults: new { controller = "Home", action = "Shop" }
-    );
-
-    endpoints.MapControllerRoute(
         name: "404",
         pattern: "404",
         defaults: new { controller = "Home", action = "PageNotFound" }
@@ -79,6 +79,7 @@ app.UseEndpoints(endpoints =>
 
 
     endpoints.MapDefaultControllerRoute();
+
 });
 
 app.Run();

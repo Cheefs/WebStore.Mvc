@@ -1,5 +1,5 @@
 ﻿
-namespace WebStore.Mvc.Domain
+namespace WebStore.Mvc.Domain.Entities
 {
     public class Brand: BaseEntity
     {

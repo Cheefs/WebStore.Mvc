@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using WebStore.Mvc.Models;
-using WebStore.Mvc.Infrastructure.Interfaces;
+﻿using WebStore.Mvc.Models;
+using WebStore.Mvc.Servises.Interfaces;
 
-namespace WebStore.Mvc.Infrastructure.InMemory;
+namespace WebStore.Mvc.Servises.InMemory;
 
 public class EmployeRepository : IRepository<EmployeViewModel>
 {
