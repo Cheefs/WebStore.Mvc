@@ -18,4 +18,8 @@
     <ProjectReference Include="..\WebStore.Mvc.Domain\WebStore.Mvc.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

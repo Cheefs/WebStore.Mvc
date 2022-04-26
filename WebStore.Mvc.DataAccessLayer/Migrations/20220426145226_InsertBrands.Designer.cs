@@ -11,22 +11,19 @@ using WebStore.Mvc.DataAccessLayer;
 namespace WebStore.Mvc.DataAccessLayer.Migrations
 {
     [DbContext(typeof(WebStoreDbContext))]
-    [Migration("20220424151230_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220426145226_InsertBrands")]
+    partial class InsertBrands
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.4");
 
-            modelBuilder.Entity("WebStore.Mvc.Domain.Brand", b =>
+            modelBuilder.Entity("WebStore.Mvc.Domain.Entities.Brand", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -35,25 +32,20 @@ namespace WebStore.Mvc.DataAccessLayer.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("WebStore.Mvc.Domain.Product", b =>
+            modelBuilder.Entity("WebStore.Mvc.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BrandId")
+                    b.Property<int?>("BrandId")
+                        .IsRequired()
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -72,9 +64,6 @@ namespace WebStore.Mvc.DataAccessLayer.Migrations
                     b.Property<int>("SectionId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
@@ -84,14 +73,11 @@ namespace WebStore.Mvc.DataAccessLayer.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("WebStore.Mvc.Domain.Section", b =>
+            modelBuilder.Entity("WebStore.Mvc.Domain.Entities.Section", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -103,9 +89,6 @@ namespace WebStore.Mvc.DataAccessLayer.Migrations
                     b.Property<int?>("ParentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ParentId");
@@ -113,15 +96,15 @@ namespace WebStore.Mvc.DataAccessLayer.Migrations
                     b.ToTable("Sections");
                 });
 
-            modelBuilder.Entity("WebStore.Mvc.Domain.Product", b =>
+            modelBuilder.Entity("WebStore.Mvc.Domain.Entities.Product", b =>
                 {
-                    b.HasOne("WebStore.Mvc.Domain.Brand", "Brand")
+                    b.HasOne("WebStore.Mvc.Domain.Entities.Brand", "Brand")
                         .WithMany("Products")
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebStore.Mvc.Domain.Section", "Section")
+                    b.HasOne("WebStore.Mvc.Domain.Entities.Section", "Section")
                         .WithMany("Products")
                         .HasForeignKey("SectionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -132,21 +115,21 @@ namespace WebStore.Mvc.DataAccessLayer.Migrations
                     b.Navigation("Section");
                 });
 
-            modelBuilder.Entity("WebStore.Mvc.Domain.Section", b =>
+            modelBuilder.Entity("WebStore.Mvc.Domain.Entities.Section", b =>
                 {
-                    b.HasOne("WebStore.Mvc.Domain.Section", "ParentSection")
+                    b.HasOne("WebStore.Mvc.Domain.Entities.Section", "ParentSection")
                         .WithMany()
                         .HasForeignKey("ParentId");
 
                     b.Navigation("ParentSection");
                 });
 
-            modelBuilder.Entity("WebStore.Mvc.Domain.Brand", b =>
+            modelBuilder.Entity("WebStore.Mvc.Domain.Entities.Brand", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("WebStore.Mvc.Domain.Section", b =>
+            modelBuilder.Entity("WebStore.Mvc.Domain.Entities.Section", b =>
                 {
                     b.Navigation("Products");
                 });
