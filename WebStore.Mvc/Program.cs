@@ -1,12 +1,13 @@
 using WebStore.Mvc.Servises.Interfaces;
+using WebStore.Mvc.Servises.Sql;
 using WebStore.Mvc.Servises.InMemory;
 using WebStore.Mvc.Models;
 using WebStore.Mvc.DataAccessLayer;
 using WebStore.Mvc.Routes;
 
 var builder = WebApplication.CreateBuilder(args);
-
 var servisesRef = builder.Services;
+
 servisesRef.AddControllersWithViews();
 servisesRef.AddSingleton<IRepository<EmployeViewModel>, EmployeRepository>();
 servisesRef.AddTransient<IProductData, ProductRepository>();
@@ -25,7 +26,15 @@ using(var scope = app.Services.CreateScope())
     var serviceProvider = scope.ServiceProvider;
     var context = serviceProvider.GetService<WebStoreDbContext>();
 
-    DbInitializer.Initialize(context);
+    try
+    {
+        DbInitializer.Initialize(context);
+    } catch(Exception ex)
+    {
+        var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Initialize db error");
+    }
+  
 }
 
 app.UseStaticFiles();
