@@ -10,7 +10,8 @@
 *.userosscache
 *.sln.docstates
 
-*/WebStore.db.*
+*/WebStore.db
+*/WebStore.db-*
 */appsettings.Development.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)

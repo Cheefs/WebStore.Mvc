@@ -1,9 +1,10 @@
 ﻿using WebStore.Mvc.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace WebStore.Mvc.DataAccessLayer
 {
-    public class WebStoreDbContext: DbContext
+    public class WebStoreDbContext: IdentityDbContext<User>
     {
         public DbSet<Product>? Products { get; set; }
         public DbSet<Section>? Sections { get; set; }
