@@ -20,7 +20,5 @@ namespace WebStore.Mvc.Controllers
         public IActionResult ProductDetails() => View();
 
         public IActionResult PageNotFound() => View();
-
-        public IActionResult Login() => View();
     }
 }
