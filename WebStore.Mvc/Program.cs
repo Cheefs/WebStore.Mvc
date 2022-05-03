@@ -3,7 +3,6 @@ using WebStore.Mvc.Servises.Sql;
 using WebStore.Mvc.Servises.InMemory;
 using WebStore.Mvc.Models;
 using WebStore.Mvc.DataAccessLayer;
-using WebStore.Mvc.Routes;
 using WebStore.Mvc.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 
@@ -46,6 +45,11 @@ servisesRef.ConfigureApplicationCookie(options => {
     options.SlidingExpiration = true;
 });
 
+servisesRef.AddControllersWithViews(options =>
+{
+    options.EnableEndpointRouting = false;
+});
+
 var app = builder.Build();
 
 using(var scope = app.Services.CreateScope())
@@ -65,12 +69,15 @@ using(var scope = app.Services.CreateScope())
 }
 
 app.UseStaticFiles();
+
 app.UseAuthentication();
-app.UseRouting();
-app.UseEndpoints(endpoints =>
+
+app.UseMvc(routes =>
 {
-    endpoints.MapHomeRoutes();
-    endpoints.MapDefaultControllerRoute();
+    routes.MapRoute(
+        name: "default",
+        template: "{controller=Home}/{action=Index}/{id?}");
 });
+
 
 app.Run();

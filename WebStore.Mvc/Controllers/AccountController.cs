@@ -15,9 +15,12 @@ namespace WebStore.Mvc.Controllers
             (_userManager, _signInManager) = (userManager, signInManager);
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string? returnUrl)
         {
-            return View(new LoginViewModel());
+            return View(new LoginViewModel()
+            {
+                ReturnUrl = returnUrl,
+            });
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -25,16 +28,17 @@ namespace WebStore.Mvc.Controllers
         {
             if (ModelState.IsValid) 
             {
-                var regirectUrl = Url.IsLocalUrl(model.ReturnUrl) ? model.ReturnUrl : Url.RouteUrl(new UrlActionContext
-                {
-                    Controller = "Home",
-                    Action = "Index",
-                });
-             
                 var loginResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
 
                 if (loginResult.Succeeded)
-                    return Redirect(regirectUrl);
+                {
+                    if (Url.IsLocalUrl(model.ReturnUrl))
+                    {
+                        return Redirect(model.ReturnUrl);
+                    }
+
+                    return RedirectToAction("Index", "Home");
+                }
 
             }
             ModelState.AddModelError("", "Вход невозможен");
@@ -42,7 +46,7 @@ namespace WebStore.Mvc.Controllers
             return View(model);
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -74,6 +78,11 @@ namespace WebStore.Mvc.Controllers
             }
 
             return View(model);
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
