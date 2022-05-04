@@ -1,0 +1,31 @@
+[
+  {
+    "outputFileName": "wwwroot/public/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/public/css/main.css",
+      "wwwroot/public/css/prettyPhoto.css",
+      "wwwroot/public/css/price-range.css",
+      "wwwroot/public/css/animate.css",
+      "wwwroot/public/css/responsive.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/public/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/public/js/price-range.js",
+      "wwwroot/public/js/jquery.prettyPhoto.js",
+      "wwwroot/public/js/main.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "wwwroot/public/css/typography.min.css",
+    "inputFiles": [
+      "wwwroot/public/css/typography.css"
+    ]
+  }
+]

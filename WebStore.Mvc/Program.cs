@@ -65,7 +65,6 @@ using(var scope = app.Services.CreateScope())
         var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "Initialize db error");
     }
-  
 }
 
 app.UseStaticFiles();
@@ -78,6 +77,5 @@ app.UseMvc(routes =>
         name: "default",
         template: "{controller=Home}/{action=Index}/{id?}");
 });
-
 
 app.Run();
