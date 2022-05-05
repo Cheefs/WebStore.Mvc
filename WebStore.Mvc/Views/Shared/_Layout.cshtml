@@ -8,46 +8,41 @@
     <title>@ViewBag.Title |  Web Store</title>
     <link href="~/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/public/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/public/css/prettyPhoto.css" rel="stylesheet">
-    <link href="~/public/css/price-range.css" rel="stylesheet">
-    <link href="~/public/css/animate.css" rel="stylesheet">
-	<link href="~/public/css/main.css" rel="stylesheet">
-	<link href="~/public/css/responsive.css" rel="stylesheet">
+    <link href="~/public/css/site.min.css" rel="stylesheet">
+    <link href="~/public/css/typography.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="~/public/js/html5shiv.js"></script>
     <script src="~/public/js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="~/public/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/public/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/public/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/public/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="~/public/images/ico/apple-touch-icon-57-precomposed.png">
+
     @await RenderSectionAsync("styles", false)
 </head><!--/head-->
 
 <body>
 
-	@await Html.PartialAsync("Partial/_Header")
+    @await Html.PartialAsync("Partial/_Header")
 
-	@await RenderSectionAsync("top", false)
+    @await RenderSectionAsync("top", false)
 
-	
-	<section>
-		<div class="container">
-			@RenderBody()
-		</div>
-	</section>
 
-	@await Html.PartialAsync("Partial/_Footer")
+    <section>
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
 
-  
+    @await Html.PartialAsync("Partial/_Footer")
+
     <script src="~/public/js/jquery.js"></script>
-	<script src="~/public/js/bootstrap.min.js"></script>
-	<script src="~/public/js/jquery.scrollUp.min.js"></script>
-	<script src="~/public/js/price-range.js"></script>
-    <script src="~/public/js/jquery.prettyPhoto.js"></script>
-    <script src="~/public/js/main.js"></script>
+    <script src="~/public/js/bootstrap.min.js"></script>
+    <script src="~/public/js/jquery.scrollUp.min.js"></script>
+    <script src="~/public/js/site.min.js"></script>
 
-   @await RenderSectionAsync("scripts", false)
+    @await RenderSectionAsync("scripts", false)
 </body>
 </html>

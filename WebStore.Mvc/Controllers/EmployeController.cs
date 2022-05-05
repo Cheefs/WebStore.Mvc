@@ -1,19 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebStore.Mvc.Models;
 using WebStore.Mvc.Servises.Interfaces;
 
 namespace WebStore.Mvc.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class EmployeController : Controller
     {
         private readonly IRepository<EmployeViewModel> _employeRepo;
         public EmployeController(IRepository<EmployeViewModel> repository) => _employeRepo = repository;
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_employeRepo.GetAll());
         }
 
+        [AllowAnonymous]
         public IActionResult View(int id)
         {
             var employee = _employeRepo.GetById(id);
