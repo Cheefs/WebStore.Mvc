@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
+using WebStore.Mvc.Constants;
 using WebStore.Mvc.Domain.Entities;
 using WebStore.Mvc.Models;
 
@@ -66,6 +67,7 @@ namespace WebStore.Mvc.Controllers
             {
                 var user = new User { UserName = model.UserName, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
+                await _userManager.AddToRoleAsync(user, Role.USER);
 
                 if (result.Succeeded)
                 {

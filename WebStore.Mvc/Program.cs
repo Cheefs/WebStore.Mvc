@@ -5,6 +5,9 @@ using WebStore.Mvc.Models;
 using WebStore.Mvc.DataAccessLayer;
 using WebStore.Mvc.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using WebStore.Mvc.Constants;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 var servisesRef = builder.Services;
@@ -56,14 +59,22 @@ using(var scope = app.Services.CreateScope())
 {
     var serviceProvider = scope.ServiceProvider;
     var context = serviceProvider.GetService<WebStoreDbContext>();
+    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
 
-    try
+    if ( context != null)
     {
-        DbInitializer.Initialize(context);
-    } catch(Exception ex)
+        try
+        {
+            DbInitializer.Initialize(context);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Initialize db error");
+        }
+    } 
+    else
     {
-        var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "Initialize db error");
+        logger.LogError(String.Empty, "WebStoreDbContext is null");
     }
 }
 

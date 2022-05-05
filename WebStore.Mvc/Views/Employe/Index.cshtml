@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EmployeViewModel>;
+﻿@using WebStore.Mvc.Constants;
+@model IEnumerable<EmployeViewModel>;
 
 @{
     ViewBag.Title = $"Employess List";
@@ -27,7 +28,7 @@
                 <td>
                     <a asp-action="View" asp-route-id="@el.Id">View</a>
                 </td>
-                @if (User.IsInRole("admin"))
+                @if (User.IsInRole(Role.ADMIN))
                 {
                     <td>
                         <a asp-action="Edit" asp-route-id="@el.Id">
